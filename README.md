@@ -15,12 +15,15 @@ CONFIG_NAME=my-source-bucket
 S3_REGION=us-east-1
 # Name of the S3 bucket
 S3_TARGET_BUCKET=my-target-bucket
+# S3 Key ID (IAM)
+AWS_ACCESS_KEY_ID=XXXX
+# S3 Key Secrect (IAM)
+AWS_SECRET_ACCESS_KEY=XXXX
 # Name for your Cloud Function
 CLOUD_FUNCTION_NAME=syncMyBucket
-# GCS Bucket where Cloud Function zip files are stored.
-GCS_STAGING_BUCKET=my-cloud-function-bucket
 # GCS source bucket to be synced
 GCS_SOURCE_BUCKET=my-source-bucket
+
 ```
 * Next, create the runtime config and variables
 ```
@@ -32,10 +35,10 @@ gcloud --project $PROJECT beta runtime-config configs variables set aws-bucket $
 ```
 * Finally, deploy the Cloud Function
 ```
-gcloud --project $PROJECT beta functions deploy $CLOUD_FUNCTION_NAME --stage-bucket $GCS_STAGING_BUCKET \
---trigger-event providers/cloud.storage/eventTypes/object.change \
+gcloud --project $PROJECT beta functions deploy $CLOUD_FUNCTION_NAME \
+--trigger-event google.storage.object.finalize \
 --trigger-resource $GCS_SOURCE_BUCKET \
---entry-point syncGCS --runtime nodejs10 \
+--entry-point syncGCS --runtime nodejs16 \
 --set-env-vars GCLOUD_PROJECT=$PROJECT
 ```
 
