@@ -1,9 +1,8 @@
 This is a very simple Google Cloud Function which synchronizes a GCS bucket with an S3 bucket.
 
 ## Dependencies
-Enable Cloud Runtime Configuration API
-
-Enable Cloud Build API
+1. Enable Cloud Runtime Configuration API
+2. Enable Cloud Build API
 
 ## Deployment
 
