@@ -2,6 +2,7 @@ This is a very simple Google Cloud Function which synchronizes a GCS bucket with
 
 ## Dependencies
 Enable Cloud Runtime Configuration API
+
 Enable Cloud Build API
 
 ## Deployment
