@@ -1,5 +1,9 @@
 This is a very simple Google Cloud Function which synchronizes a GCS bucket with an S3 bucket.
 
+## Dependencies
+Enable Cloud Runtime Configuration API
+Enable Cloud Build API
+
 ## Deployment
 
 This script uses runtime configuration as described here:
@@ -7,7 +11,7 @@ https://cloud.google.com/deployment-manager/runtime-configurator/create-and-dele
 
 * First, you'll need to define some environment variables:
 ```
-# Name of your GCP project
+# Name of your GCP Project ID
 PROJECT=my-gcp-project
 # Name for the runtime config (this MUST match the bucket name)
 CONFIG_NAME=my-source-bucket
